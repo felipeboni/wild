@@ -1,0 +1,30 @@
+{
+    "name": "wild-platform",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@hookform/resolvers": "^2.9.10",
+        "bcryptjs": "^2.4.3",
+        "express-jwt": "^7.7.7",
+        "iron-session": "^6.2.1",
+        "next": "12.3.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-feather": "^2.0.10",
+        "react-hook-form": "^7.38.0",
+        "react-hot-toast": "^2.4.0",
+        "react-icons": "^4.6.0",
+        "rxjs": "^7.6.0",
+        "yup": "^0.32.11"
+    },
+    "devDependencies": {
+        "eslint": "8.25.0",
+        "eslint-config-next": "12.3.1"
+    }
+}
