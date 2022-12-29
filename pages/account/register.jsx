@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import { Link } from 'components';
 import { Layout } from 'components/account';
-import { userService, alertService } from 'services';
+import { userService } from 'services';
 
 export default Register;
 
@@ -33,10 +33,10 @@ function Register() {
     function onSubmit(user) {
         return userService.register(user)
             .then(() => {
-                alertService.success('Registration successful', { keepAfterRouteChange: true });
-                router.push('login');
+                // alertService.success('Registration successful', { keepAfterRouteChange: true });
+                router.push('/');
             })
-            .catch(alertService.error);
+            // .catch(alertService.error);
     }
 
     return (

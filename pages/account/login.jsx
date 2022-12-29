@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import { Link } from 'components';
 import { Layout } from 'components/account';
-import { userService, alertService } from 'services';
+import { userService } from 'services';
 
 export default Login;
 
@@ -30,7 +30,7 @@ function Login() {
                 const returnUrl = router.query.returnUrl || '/';
                 router.push(returnUrl);
             })
-            .catch(alertService.error);
+            // .catch(alertService.error);
     }
 
     return (

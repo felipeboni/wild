@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
 import { alertService, AlertType } from 'services';
+import toast, { Toaster } from 'react-hot-toast';
 
 export { Alert };
 
@@ -22,28 +23,7 @@ function Alert({ id, fade }) {
 
     useEffect(() => {
         // subscribe to new alert notifications
-        const subscription = alertService.onAlert(id)
-            .subscribe(alert => {
-                // clear alerts when an empty alert is received
-                if (!alert.message) {
-                    setAlerts(alerts => {
-                        // filter out alerts without 'keepAfterRouteChange' flag
-                        const filteredAlerts = alerts.filter(x => x.keepAfterRouteChange);
-
-                        // set 'keepAfterRouteChange' flag to false on the rest
-                        filteredAlerts.forEach(x => delete x.keepAfterRouteChange);
-                        return filteredAlerts;
-                    });
-                } else {
-                    // add alert to array
-                    setAlerts(alerts => ([...alerts, alert]));
-
-                    // auto close alert if required
-                    if (alert.autoClose) {
-                        setTimeout(() => removeAlert(alert), 3000);
-                    }
-                }
-            });
+        const subscription = alertService.onAlert(id).subscribe();
 
 
         // clear alerts on location change
@@ -99,18 +79,9 @@ function Alert({ id, fade }) {
         return classes.join(' ');
     }
 
-    if (!alerts.length) return null;
+    // if (!alerts.length) return null;
 
     return (
-        <div className="container">
-            <div className="m-3">
-                {alerts.map((alert, index) =>
-                    <div key={index} className={cssClasses(alert)}>
-                        <a className="close" onClick={() => removeAlert(alert)}>&times;</a>
-                        <span dangerouslySetInnerHTML={{ __html: alert.message }}></span>
-                    </div>
-                )}
-            </div>
-        </div>
+        <Toaster/>
     );
 }
