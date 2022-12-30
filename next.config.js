@@ -5,8 +5,8 @@ module.exports = {
     },
     publicRuntimeConfig: {
         apiUrl: process.env.NODE_ENV === 'development'
-            ? 'http://localhost:3000/api' // development api
-            : 'http://localhost:3000/api' // production api
+            ? '/api' // development api
+            : '/api' // production api
     },
     future: {
         webpack5: true, // by default, if you customize webpack config, they switch back to version 4. 
