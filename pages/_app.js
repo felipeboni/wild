@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import "@fontsource/space-grotesk";
-import "styles/globals.css";
+import "../styles/globals.css";
 
 import { userService } from "services";
 import { Nav } from "components";
@@ -41,26 +41,30 @@ function App({ Component, pageProps }) {
     setUser(userService.userValue);
     const publicPaths = ["/account/login", "/account/register"];
     const path = url.split("?")[0];
+    
     if (!userService.userValue && !publicPaths.includes(path)) {
+
       setAuthorized(false);
+      
       router.push({
         pathname: "/account/login",
         query: { returnUrl: router.asPath },
-      });
+      }, "/account/login");
+
     } else {
       setAuthorized(true);
     }
   }
 
   return (
-    <>
+    <main className="bg-slate-100 h-screen">
       <Head>
         <title>Wild</title>
 
         {/* eslint-disable-next-line @next/next/no-css-tags */}
       </Head>
 
-      <div className={`app-container ${user ? "bg-light" : ""}`}>
+      <>
           
         <Nav />
         <Toaster
@@ -79,7 +83,7 @@ function App({ Component, pageProps }) {
 
         {authorized && <Component {...pageProps} />}
 
-      </div>
-    </>
+      </>
+    </main>
   );
 }

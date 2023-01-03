@@ -1,7 +1,7 @@
 import getConfig from 'next/config';
 
 import { userService } from 'services';
-import { Notify } from './api'
+import { notify } from './api'
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -19,7 +19,7 @@ function get(url) {
     };
         
     const request = fetch(url, requestOptions).then(handleResponse);
-    // Notify(request);
+    // notify(request);
 
     return request;
 }
@@ -33,7 +33,7 @@ function post(url, body) {
     };
         
     const request = fetch(url, requestOptions).then(handleResponse);
-    Notify(request);
+    notify(request);
 
     return request;
 }
@@ -46,7 +46,7 @@ function put(url, body) {
     };
     
     const request = fetch(url, requestOptions).then(handleResponse);
-    // Notify(request);
+    // notify(request);
 
     return request;
 }
@@ -59,7 +59,7 @@ function _delete(url) {
     };
         
     const request = fetch(url, requestOptions).then(handleResponse);
-    // Notify(request);
+    // notify(request);
 
     return request;
 }
