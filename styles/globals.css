@@ -3,8 +3,49 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-      font-family: Space Grotesk, system-ui, sans-serif;
-      @apply overflow-x-hidden
-    }
+  html {
+    font-family: Space Grotesk, system-ui, sans-serif;
+    @apply overflow-x-hidden;
+  }
+
+  /* Default floating label input */
+  .input-floating input {
+    @apply block;
+    @apply p-4;
+    @apply pt-4;
+    @apply w-full;
+    @apply text-sm;
+    @apply text-gray-900;
+    @apply bg-transparent;
+    @apply rounded-lg;
+    @apply appearance-none;
+    @apply focus:outline-none;
+    @apply focus:ring-0;
+    @apply border;
+    @apply border-zinc-200;
+    @apply focus:border-primary-500;
+  }
+
+  .input-floating label {
+    @apply absolute;
+    @apply text-sm;
+    @apply text-gray-600;
+    @apply duration-300;
+    @apply transform;
+    @apply -translate-y-4;
+    @apply scale-75;
+    @apply top-2;
+    @apply z-10;
+    @apply origin-[0];
+    @apply bg-white;
+    @apply px-4;
+    @apply left-1;
+  }
+
+  /* Input error */
+  .input-floating input.is-invalid {
+    @apply text-red-600;
+    @apply border-red-600;
+  }
+
 }

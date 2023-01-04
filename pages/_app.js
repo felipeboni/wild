@@ -2,12 +2,18 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import "@fontsource/space-grotesk";
+import "@fontsource/space-grotesk/300.css";
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/600.css";
+import "@fontsource/space-grotesk/700.css";
 import "../styles/globals.css";
 
 import { userService } from "services";
 import { Nav } from "components";
 import { Toaster } from "react-hot-toast";
+
+import { AnimatePresence } from "framer-motion";
 
 export default App;
 
@@ -81,7 +87,9 @@ function App({ Component, pageProps }) {
           }}
         />
 
-        {authorized && <Component {...pageProps} />}
+        <AnimatePresence mode="wait">
+          { authorized && <Component {...pageProps} /> }
+        </AnimatePresence>
 
       </>
     </main>

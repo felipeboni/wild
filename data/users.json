@@ -43,5 +43,14 @@
         "id": 5,
         "dateCreated": "2023-01-02T16:57:18.933Z",
         "dateUpdated": "2023-01-02T16:57:18.933Z"
+    },
+    {
+        "firstName": "boni",
+        "lastName": "zera",
+        "username": "t",
+        "hash": "$2a$10$EsdNFE8rAxAeYeiSaGzcGuL9YcIdZMuBSh1VdCF2F4QIpyXAP1c9K",
+        "id": 6,
+        "dateCreated": "2023-01-04T14:41:02.889Z",
+        "dateUpdated": "2023-01-04T14:41:02.890Z"
     }
 ]
