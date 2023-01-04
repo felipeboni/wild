@@ -48,4 +48,9 @@
     @apply border-red-600;
   }
 
+  .step.active {
+    @apply text-primary-600;
+    @apply after:border-primary-100;
+  }
+
 }

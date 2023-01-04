@@ -44,19 +44,39 @@ function Register() {
     <Layout direction="col">
       <div className="w-full max-w-[400px] mx-auto">
         <ol className="flex items-center w-full">
-          <li className="flex w-full items-center text-primary-600 after:content-[''] after:w-full after:h-1 after:border-b after:border-primary-100 after:border-4 after:inline-block">
-            <span className="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-full shrink-0">
+          <li
+            className={`flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block peer ${`${ step >= 1 && "active"}`}`}
+          >
+            <span
+              className="flex items-center justify-center w-10 h-10 rounded-full shrink-0 bg-gray-100 peer-[.active]:hidden"
+            >
               <Eye color="white" size={16} />
             </span>
           </li>
-          <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block">
-            <span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full shrink-0">
-              <User size={16} />
+
+          <li
+            className={`flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block ${
+              step >= 2
+                ? "text-primary-600 after:border-primary-100"
+                : "after:border-gray-100"
+            }`}
+          >
+            <span
+              className={`flex items-center justify-center w-10 h-10 rounded-full shrink-0 ${
+                step >= 2 ? "bg-primary-100" : "bg-gray-100"
+              }`}
+            >
+              <Eye color={`${step >= 2 ? "white" : "black"}`} size={16} />
             </span>
           </li>
+
           <li className="flex items-center">
-            <span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full shrink-0">
-              <GitMerge size={16} />
+            <span
+              className={`flex items-center justify-center w-10 h-10 rounded-full shrink-0 ${
+                step === 3 ? "bg-primary-100" : "bg-gray-100"
+              }`}
+            >
+              <Eye color={`${step >= 3 ? "white" : "black"}`} size={16} />
             </span>
           </li>
         </ol>
@@ -68,9 +88,13 @@ function Register() {
             <motion.div
               className="w-full max-w-[500px] mx-auto text-center flex flex-col gap-10"
               key="1"
-              initial={{ x: "-100%", opacity: 0 }}
+              initial={{ x: 0, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "100%", opacity: 0 }}
+              exit={{ x: "-3vw", opacity: 0 }}
+              transition={{
+                x: { duration: 0.3 },
+                default: { ease: "linear" },
+              }}
             >
               <div>
                 <h3 className="text-6xl font-medium text-primary-500 mb-3">
@@ -113,9 +137,13 @@ function Register() {
             <motion.div
               className="w-full max-w-[500px] mx-auto text-center flex flex-col gap-10"
               key="2"
-              initial={{ x: "-100%", opacity: 0 }}
+              initial={{ x: "3vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "100%", opacity: 0 }}
+              exit={{ x: "-3vw", opacity: 0 }}
+              transition={{
+                x: { duration: 0.3 },
+                default: { ease: "linear" },
+              }}
             >
               <div>step 2</div>
 
@@ -133,9 +161,13 @@ function Register() {
             <motion.div
               className="w-full max-w-[500px] mx-auto text-center flex flex-col gap-10"
               key="3"
-              initial={{ x: "-100%", opacity: 0 }}
+              initial={{ x: "3vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "100%", opacity: 0 }}
+              exit={{ x: "-3vw", opacity: 0 }}
+              transition={{
+                x: { duration: 0.3 },
+                default: { ease: "linear" },
+              }}
             >
               <div>step 3</div>
               <button
