@@ -45,7 +45,7 @@ function Login() {
   }
 
   return (
-    <Layout>
+    <Layout direction="row">
       <div className="bg-[url('/img/logos/wild-fox-white.svg')] bg-[length:50%] bg-no-repeat bg-center lg:w-1/2 w-0 transition-[width] delay-100 bg-primary-500 rounded-l"></div>
 
       <div className="w-1/2 rounded-r flex flex-center justify-center flex-col">

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export { Layout };
 
-function Layout({ children }) {
+function Layout({ children, direction }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Layout({ children }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="flex h-full w-screen bg-white aspect-video rounded-lg">
+          className={`flex h-full w-screen bg-white aspect-video rounded-lg flex-auto justify-around flex-${direction}`}>
             {children}
           </motion.div>
       </div>
