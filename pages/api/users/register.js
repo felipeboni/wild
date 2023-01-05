@@ -10,6 +10,7 @@ export default apiHandler({
     post: register
 });
 
+
 function register(req, res) {
     // split out password from user details 
     const { password, ...user } = req.body;
@@ -28,7 +29,9 @@ function register(req, res) {
             token
         });
     }).catch((err) => {
-        throw err
+        return res.status(409).json({
+            message: err
+        });
     });
     
 }
