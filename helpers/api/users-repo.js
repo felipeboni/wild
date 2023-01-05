@@ -8,8 +8,7 @@ const connection = new Db({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  timezone: mysqlTz(),
-  dateStrings: true
+  timezone: "-3"
 });
 
 // users in JSON file for simplicity, store in a db for production applications

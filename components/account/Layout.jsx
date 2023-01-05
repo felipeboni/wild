@@ -24,7 +24,7 @@ function Layout({ children, direction }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className={`flex h-full w-screen bg-white aspect-video rounded-lg flex-auto justify-around flex-${direction}`}>
+          className={`flex h-full w-screen bg-white aspect-video flex-auto justify-around flex-${direction}`}>
             {children}
           </motion.div>
       </div>
