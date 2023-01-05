@@ -49,8 +49,14 @@
   }
 
   .step.active {
-    @apply text-primary-600;
-    @apply after:border-primary-100;
+    @apply text-primary-500;
+    @apply after:border-primary-500;
   }
+  
+  .step.active span {
+    @apply bg-primary-500;
+    @apply cursor-pointer;
+  }
+
 
 }

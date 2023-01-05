@@ -48,7 +48,7 @@ function Login() {
     <Layout direction="row">
       <div className="bg-[url('/img/logos/wild-fox-white.svg')] bg-[length:50%] bg-no-repeat bg-center lg:w-1/2 w-0 transition-[width] delay-100 bg-primary-500 rounded-l"></div>
 
-      <div className="w-1/2 rounded-r flex flex-center justify-center flex-col">
+      <div className="lg:w-1/2 w-full rounded-r flex flex-center justify-center flex-col">
         <div className="max-w-md w-full mx-auto text-center flex flex-col gap-5">
 
           <div className="flex w-full flex-col gap-5">
@@ -138,7 +138,7 @@ function Login() {
 
           <button
               disabled={formState.isSubmitting}
-              className="text-center bg-[#1B2838] rounded-lg px-5 py-3 800 inline-flex items-center justify-center w-full"
+              className="text-center bg-[#1B2838] rounded-lg px-5 py-2.5 800 inline-flex items-center justify-center w-full"
             >
               <Image src="/img/steam-hor.svg" width={150} height={30}/>
               

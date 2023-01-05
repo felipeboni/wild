@@ -21,7 +21,7 @@ export const userService = {
   getAll,
   getById,
   update,
-  delete: _delete,
+  delete: _delete
 };
 
 function login(username, password) {
@@ -44,13 +44,13 @@ function logout() {
 }
 
 function register(user) {
-  return fetchWrapper.post(`${baseUrl}/register`, user).then(response => {
+  return fetchWrapper.post(`${baseUrl}/register`, user).then((response) => {
     // automatically log new user
 
     const { token } = response;
 
     userSubject.next(user);
-    localStorage.setItem("user", JSON.stringify({...user, token}));
+    localStorage.setItem("user", JSON.stringify({ ...user, token }));
   });
 }
 

@@ -19,7 +19,7 @@ function Layout({ children, direction }) {
   }, []);
 
   return (
-    <div className="max-w-[1200px] mx-auto flex h-full content-center items-center justify-center p-[64px]">
+    <div className="mx-auto flex h-full content-center items-center justify-center">
           <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
