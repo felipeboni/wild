@@ -22,16 +22,16 @@ function Register() {
 
   // Save nickname to generate avatar on next step
   const [nickname, setNickname] = useState("");
-  const [config, setConfig] = useState(genConfig(nickname));
+  const [avatar, setAvatar] = useState(`${hashRandom()}`);
+  const [config, setConfig] = useState(genConfig(avatar));
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
 
-  const [avatar, setAvatar] = useState(hashRandom());
-
   useEffect(() => {
     setConfig(genConfig(avatar));
+    console.log(avatar)
   }, [avatar]);
 
   // form validation rules
@@ -83,10 +83,13 @@ function Register() {
   const { errors } = formState;
 
   function onSubmit(user) {
+    user = { ...user,  avatar };
     return userService.register(user).then(() => {
       // alertService.success('Registration successful', { keepAfterRouteChange: true });
       router.push("/");
-    });
+    }).catch(err => {
+      // toast.error(`Ops! ${err.toString()}`);
+    })
     // .catch(alertService.error);
   }
 
@@ -209,7 +212,7 @@ function Register() {
                     size={18}
                     color="gray"
                     className="absolute right-[-40px] top-1/2 mt-[-8px] cursor-pointer"
-                    onClick={() => setAvatar(hashRandom())}
+                    onClick={() => setAvatar(`${hashRandom()}`)}
                   />
                 </div>
 
@@ -337,6 +340,7 @@ function Register() {
                 <button
                   className="w-fit mx-auto text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm p-3.5 text-center inline-flex items-center"
                   disabled={formState.isSubmitting}
+                  onClick={() => console.log(avatar)}
                 >
                   {formState.isSubmitting ? (
                     <Spinner color={"white"} size={24} />
