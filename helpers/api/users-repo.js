@@ -1,4 +1,6 @@
-import Db from 'mysql2-async'
+const mysql = require('mysql2');
+import Db from 'mysql2-async';
+import mysqlTz from "mysql-tz";
 
 const connection = new Db({
   host: process.env.DB_HOST,
@@ -6,6 +8,8 @@ const connection = new Db({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
+  timezone: mysqlTz(),
+  dateStrings: true
 });
 
 // users in JSON file for simplicity, store in a db for production applications
