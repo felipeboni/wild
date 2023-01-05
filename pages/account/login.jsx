@@ -122,7 +122,7 @@ function Login() {
                 className="text-white text-center bg-primary-700 hover:bg-primary-800 font-medium rounded-lg px-5 py-3.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 inline-flex items-center justify-center w-full gap-3"
               >
                 {formState.isSubmitting ? (
-                  <Spinner color={"white"} />
+                  <Spinner color={"white"} size={20}/>
                 ) : (
                   <LogIn size={20} />
                 )}

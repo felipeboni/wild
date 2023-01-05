@@ -52,5 +52,50 @@
         "id": 6,
         "dateCreated": "2023-01-04T14:41:02.889Z",
         "dateUpdated": "2023-01-04T14:41:02.890Z"
+    },
+    {
+        "username": "asdasdasdasd",
+        "firstName": "asdasd",
+        "lastName": "asdads",
+        "hash": "$2a$10$VAIaMe0Xdkn5JwM40aUQHeEQw09goiaffEWmgL.vTSVcTtM/ApSni",
+        "id": 7,
+        "dateCreated": "2023-01-05T03:47:32.085Z",
+        "dateUpdated": "2023-01-05T03:47:32.085Z"
+    },
+    {
+        "username": "sad",
+        "firstName": "asd",
+        "lastName": "asd",
+        "hash": "$2a$10$QDpO9dR1pwbMDMv9jdH6IOmg2agO1lHV7ZPlL7FzMZe9SEjk8pstS",
+        "id": 8,
+        "dateCreated": "2023-01-05T03:57:31.716Z",
+        "dateUpdated": "2023-01-05T03:57:31.716Z"
+    },
+    {
+        "username": "bonizera",
+        "firstName": "Felipe",
+        "lastName": "Boni",
+        "hash": "$2a$10$ql6jML4H3dSDsu5o/vKcEOBC9flyGi.JFwrhBYGRujpbFG58zgLS.",
+        "id": 9,
+        "dateCreated": "2023-01-05T04:12:54.794Z",
+        "dateUpdated": "2023-01-05T04:12:54.794Z"
+    },
+    {
+        "username": "bon izera",
+        "firstName": "felipe",
+        "lastName": "boni",
+        "hash": "$2a$10$Y9w7oSxCun2aeQCHM/l5vOHC5Ps6hEy2QpVWAaFysnH0WYKqKFC.m",
+        "id": 10,
+        "dateCreated": "2023-01-05T04:14:26.554Z",
+        "dateUpdated": "2023-01-05T04:14:26.554Z"
+    },
+    {
+        "username": " asd asd",
+        "firstName": "asd ",
+        "lastName": " d",
+        "hash": "$2a$10$gLs2vmoS2KknqQ4IsfKBlO5M.DTkP5GG/TiKuu9deU.Qc/33SzEHS",
+        "id": 11,
+        "dateCreated": "2023-01-05T04:26:58.248Z",
+        "dateUpdated": "2023-01-05T04:26:58.248Z"
     }
 ]
