@@ -1,18 +1,18 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-import getConfig from 'next/config';
-
-import { apiHandler, usersRepo } from 'helpers/api';
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+import getConfig from "next/config";
 
 const { serverRuntimeConfig } = getConfig();
+
+import { apiHandler, usersRepo } from "helpers/api";
 
 export default apiHandler({
     post: authenticate
 });
 
-function authenticate(req, res) {
+async function authenticate(req, res) {
     const { username, password } = req.body;
-    const user = usersRepo.find(u => u.username === username);
+    const user = await usersRepo.find(username);
 
     // validate
     if (!(user && bcrypt.compareSync(password, user.hash))) {

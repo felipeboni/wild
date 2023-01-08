@@ -1,17 +1,14 @@
-const mysql = require('mysql2');
-import Db from 'mysql2-async';
-import mysqlTz from "mysql-tz";
+var mysql = require("mysql");
+const util = require("util");
 
-const connection = new Db({
+const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  timezone: "-3"
+  //   timezone: "-3"
 });
-
-// users in JSON file for simplicity, store in a db for production applications
 
 export const usersRepo = {
   // getAll: () => users,
@@ -22,7 +19,24 @@ export const usersRepo = {
   // delete: _delete,
 };
 
+async function find(username) {
+    if (connection.state === 'disconnected') connection.connect()
+
+  return new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT * FROM users WHERE username = ?",
+      [username],
+      (err, result) => {
+        connection.end()
+        return err ? reject(err) : resolve(result[0]);
+      }
+    );
+  });
+}
+
 async function create(user) {
+  connection.connect();
+
   // set date created and updated
   user.dateCreated = Date.parse(new Date().toISOString());
   user.dateUpdated = Date.parse(new Date().toISOString());
@@ -31,31 +45,20 @@ async function create(user) {
   user.steamid64 = "0";
   // user.steamid64 = "76561198062064740";
 
-  // Insert user
-  const id = await connection.insert("INSERT INTO users (username, firstName, lastName, avatar, hash, steamid64, dateCreated, dateUpdated) VALUES (?)", [Object.values(user)])
-  .then(async () => {
-      console.log(`Usuário ${user.username} criado`);
+  try {
+    await connection.query(
+      "INSERT INTO users (username, firstName, lastName, avatar, hash, steamid64, dateCreated, dateUpdated) VALUES (?)",
+      [Object.values(user)]
+    );
 
-      // If user has been created successfully, get this user ID
-      return await connection.getval(`SELECT id FROM wild.users WHERE username = ?`, [user.username]);
-  })
-  .catch((err) => {
-    if (err.errno === 1062) throw `Usuário ${user.username} já existe`
+    console.log(`Usuário ${user.username} criado`);
+  } catch (err) {
     throw err;
-  });
+  } finally {
+    const { id } = await find(user.username);
 
-  return id;
-}
-
-function find(profile) {
-  const { username } = profile;
-
-  connection.query("SELECT username FROM users WHERE username = ?", [username], (err, [user]) => {
-    if (err) throw err;
-
-    return user;
-  });
-
+    return id;
+  }
 }
 
 // function update(id, params) {
@@ -79,7 +82,6 @@ function find(profile) {
 // // private helper functions
 
 // function saveData() {
-
 
 //   fs.writeFileSync("data/users.json", JSON.stringify(users, null, 4));
 // }
