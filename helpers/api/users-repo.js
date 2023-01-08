@@ -1,15 +1,6 @@
 var mysql = require("mysql");
 const util = require("util");
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  //   timezone: "-3"
-});
-
 export const usersRepo = {
   // getAll: () => users,
   // getById: (id) => users.find((x) => x.id.toString() === id.toString()),
@@ -19,15 +10,29 @@ export const usersRepo = {
   // delete: _delete,
 };
 
+function connect() {
+  const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    //   timezone: "-3"
+  });
+
+  return connection;
+}
+
 async function find(username) {
-    if (connection.state === 'disconnected') connection.connect()
+  const connection = connect();
+  if (connection.state === "disconnected") connection.connect();
 
   return new Promise((resolve, reject) => {
     connection.query(
       "SELECT * FROM users WHERE username = ?",
       [username],
       (err, result) => {
-        connection.end()
+        connection.end();
         return err ? reject(err) : resolve(result[0]);
       }
     );
@@ -35,6 +40,7 @@ async function find(username) {
 }
 
 async function create(user) {
+  const connection = connect();
   connection.connect();
 
   // set date created and updated
