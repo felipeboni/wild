@@ -48,13 +48,13 @@ function Login() {
     <Layout direction="row">
       <div className="bg-[url('/img/logos/wild-fox-white.svg')] bg-[length:50%] bg-no-repeat bg-center lg:w-1/2 w-0 transition-[width] delay-100 bg-primary-500"></div>
 
-      <div className="lg:w-1/2 w-full flex flex-center justify-center flex-col">
-        <div className="max-w-md w-full mx-auto text-center flex flex-col gap-5">
+      <div className="flex flex-col justify-center w-full lg:w-1/2 flex-center">
+        <div className="flex flex-col w-full max-w-md gap-5 mx-auto text-center">
 
-          <div className="flex w-full flex-col gap-5">
+          <div className="flex flex-col w-full gap-5">
             <h1 className="text-primary-500">entrar</h1>
 
-            <span className="text-right text-sm">
+            <span className="text-sm text-right">
               <span className="text-zinc-400">Não tem uma conta?</span>
               &nbsp;
               <Link className="text-primary-500" href="/account/register">
@@ -119,7 +119,7 @@ function Login() {
 
               <button
                 disabled={formState.isSubmitting}
-                className="text-white text-center bg-primary-700 hover:bg-primary-800 font-medium rounded-lg px-5 py-3.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 inline-flex items-center justify-center w-full gap-3"
+                className="text-white text-center bg-primary-500 hover:bg-primary-600 font-medium rounded-lg px-5 py-3.5  inline-flex items-center justify-center w-full gap-3"
               >
                 {formState.isSubmitting ? (
                   <Spinner color={"white"} size={20}/>
